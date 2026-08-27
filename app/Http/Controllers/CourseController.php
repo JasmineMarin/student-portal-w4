@@ -16,4 +16,9 @@ class CourseController extends Controller
 
         return view('courses', ['courses' => $courses]);
     }
+
+    public function show($code)
+    {
+        return "Displaying details for course code: " . e($code);
+    }
 }
