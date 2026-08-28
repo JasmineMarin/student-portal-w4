@@ -17,8 +17,18 @@ class CourseController extends Controller
         return view('courses', ['courses' => $courses]);
     }
 
-    public function show($code)
+    public function show(string $code)
     {
-        return "Displaying details for course code: " . e($code);
+        $courses = [
+            'WEBDEV3' => 'Web Framework Laravel Development',
+            'WEBDEV2' => 'Server-Side Scripting',
+        ];
+
+        abort_unless(isset($courses[$code]), 404);
+
+        return view('courses.show', [
+            'code' => $code,
+            'title' => $courses[$code],
+        ]);
     }
 }
