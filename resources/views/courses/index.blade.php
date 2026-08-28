@@ -3,6 +3,10 @@
 @section('title', 'Courses – Student Portal')
 
 @section('content')
+    <!-- Test Alert Components -->
+    <x-alert type="success" message="Course list loaded successfully!" />
+    <x-alert type="danger">Something went wrong.</x-alert>
+
     <h1>Courses List</h1>
 
     <p>
