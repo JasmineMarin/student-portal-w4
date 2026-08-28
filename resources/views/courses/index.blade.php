@@ -21,18 +21,16 @@
         <p>Results for "<strong>{{ $search }}</strong>":</p>
     @endif
 
-    <!-- Course List -->
-    <ul>
+    <!-- Course Cards -->
     @forelse ($courses as $course)
-        <li>
-            <a href="{{ route('courses.show', $course['code']) }}">
-                {{ $course['code'] }}
-            </a> — {{ $course['title'] }}
-        </li>
+        <x-course-card 
+            :code="$course['code']" 
+            :title="$course['title']" 
+            :units="$course['units'] ?? 3" 
+        />
     @empty
-        <li>No courses available.</li>
+        <p>No courses available.</p>
     @endforelse
-    </ul>
 @endsection
 
 @push('scripts')
