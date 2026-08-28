@@ -2,16 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ContactController;
 
+// Static Pages
 Route::get('/', fn () => view('home'));
 Route::get('/about', fn () => view('about'));
-Route::get('/courses', function () {
-    $courses = [
-        ['code' => 'WEBDEV3', 'title' => 'Web Framework Laravel Development', 'units' => 5],
-        ['code' => 'DBMS2', 'title' => 'Advanced Database Systems', 'units' => 3],
-        ['code' => 'SE1', 'title' => 'Software Engineering 1', 'units' => 3],
-    ];
-    return view('courses', ['courses' => $courses]);
-});
-Route::get('/contact', fn () => view('contact'));
-Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+
+// Dummy Login Route
+Route::get('/login', fn () => 'Login Page')->name('login');
+
+// Invokable Contact Route
+Route::get('/contact', ContactController::class)->name('contact');
+
+// Partial Resource Route (Only register index, show, and create)
+Route::resource('courses', CourseController::class)->only(['index', 'show', 'create']);
+Route::resource('courses', CourseController::class)->only(['index', 'show', 'create', 'store']);
