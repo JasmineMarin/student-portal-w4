@@ -1,4 +1,8 @@
-<x-layout title="Courses – Student Portal">
+@extends('layouts.app')
+
+@section('title', 'Courses – Student Portal')
+
+@section('content')
     <h1>Courses List</h1>
 
     <p>
@@ -29,4 +33,8 @@
         <li>No courses available.</li>
     @endforelse
     </ul>
-</x-layout>
+@endsection
+
+@push('scripts')
+    <script src="/js/courses.js"></script>
+@endpush
